@@ -75,8 +75,6 @@ async function main() {
         }),
     },
     {
-      // On Cancel callback that wraps the group
-      // So if the user cancels one of the prompts in the group this function will be called
       onCancel({results}) {
         cancel('Operation cancelled.')
         process.exit(0)
@@ -85,14 +83,12 @@ async function main() {
   )
 
   const commitMessage = `${r.type}(${r.scope}) ${r.subject} ${r.tags}`
-  // Console.log(commitMessage);
 
   if (r.commitBoolean) {
     spawnSync('git', ['commit', '-m', commitMessage], {
       cwd: '.',
       encoding: 'utf8',
     })
-    // Console.log(stdout);
   }
 
   outro('Lets ship it!')
