@@ -2,20 +2,30 @@
 	"name": "commit",
 	"version": "0.0.0",
 	"license": "MIT",
-	"type": "module",
-  "main": "src/index.cjs",
-  "bin": {
-    "commit": "src/index.cjs"
-  },
+	"main": "src/index.cjs",
+	"bin": {
+		"commit": "bin/commit.js"
+	},
 	"engines": {
 		"node": ">=16"
 	},
-	"scripts": {},
+	"scripts": {
+		"build": "esbuild --bundle --platform=node --target=node16 --outfile=./bin/commit.js ./src/index.ts",
+    "lint": "xo"
+	},
 	"dependencies": {
 		"@clack/core": "^0.3.2",
-		"@clack/prompts": "^0.6.3"
+		"@clack/prompts": "^0.6.3",
+		"esbuild": "^0.17.19"
 	},
 	"devDependencies": {
-		"typescript": "^5.0.3"
+		"@types/node": "^20.1.5",
+		"typescript": "^5.0.3",
+		"xo": "^0.54.2"
+	},
+	"xo": {
+    "space": true,
+    "semicolon": false,
+		"rules": {}
 	}
 }
